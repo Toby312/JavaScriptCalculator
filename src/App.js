@@ -1,5 +1,6 @@
 import './App.css';
-import React, {useState, useEffect, useDeferredValue} from 'react'
+import React, {useState, useEffect} from 'react'
+import {evaluate} from 'mathjs'
 import TheDisplay from './components/TheDisplay';
 import TheKeyboard from './components/TheKeyboard';
 
@@ -35,18 +36,17 @@ const App = ()=> {
         case sign:
           handleSigns(value)
           break;
-        default:
-          break;
-    
-   
+        default: 
     }
    }
   
    const handleOutput = ()=>{
      setOutput(result)
    }
+
+  
   const handleEqual = ()=>{
-    const total = eval(result)
+    const total = evaluate(result)
     setInput(`${total}`)
     setOutput(`${total}`)
     setResult(`${total}`)
